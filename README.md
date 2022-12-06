@@ -9,5 +9,5 @@ Xậy Xây Dựng Ứng Dụng Web Báo Điện Tử
 |-------------|-----------------|
 | Nguyễn Văn Đạt | 16110050        |
 | Phan Minh Sang | 19146250       |
-|             |                 |
+|Nguyễn Quốc Bảo | 19146157     |
 |             |                 |
