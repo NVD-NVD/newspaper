@@ -29,6 +29,10 @@ https://hackmd.io/@nndkhoa9/rJc8Tbowj
     4. Maven
 ```
 
+## Link thiết kế giao diện
+```
+https://www.figma.com/file/6ISWnRtFCJDxTmCDNZCIYj/Untitled?node-id=0%3A1&t=IDlSQ0QvJnI94RUo-1
+```
 ## Bảng công việc
 | STT | Công Việc               | Mô tải            | Ngày Tạo | Ngày Cập Nhập | Phụ Trách | Trạng Thái |
 |-----|-------------------------|-------------------|----------|---------------|-----------|------------|
