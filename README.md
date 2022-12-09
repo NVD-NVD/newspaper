@@ -14,7 +14,7 @@ Ngô Ngọc Đăng Khoa
 | Nguyễn Văn Đạt | 16110050        |
 | Phan Minh Sang | 19146250       |
 |Nguyễn Quốc Bảo | 19146157     |
-|             |                 |
+|Lê Mạnh Tuấn Phan | 19110422         |
 
 ## Yêu cầu của đề tài
 ``` 
