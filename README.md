@@ -30,8 +30,13 @@ https://hackmd.io/@nndkhoa9/rJc8Tbowj
 ```
 
 ## Link thiết kế giao diện
-```
+``` bash
 https://www.figma.com/file/6ISWnRtFCJDxTmCDNZCIYj/Untitled?node-id=0%3A1&t=IDlSQ0QvJnI94RUo-1
+```
+
+## Link danh sách công việc
+``` bash
+https://quark-banon-373.notion.site/dc23455f46a148c2a6fdd5b79bfc0c8a?v=bdb037b7591e42948622a4b20183e4fb
 ```
 ## Bảng công việc
 | STT | Công Việc                 | Mô tải                                              | Ngày Tạo   | Ngày Cập Nhập | Phụ Trách | Trạng Thái |
