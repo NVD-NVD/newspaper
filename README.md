@@ -38,26 +38,3 @@ https://www.figma.com/file/6ISWnRtFCJDxTmCDNZCIYj/Untitled?node-id=0%3A1&t=IDlSQ
 ``` bash
 https://quark-banon-373.notion.site/dc23455f46a148c2a6fdd5b79bfc0c8a?v=bdb037b7591e42948622a4b20183e4fb
 ```
-## Bảng công việc
-| STT | Công Việc                 | Mô tải                                              | Ngày Tạo   | Ngày Cập Nhập | Phụ Trách | Trạng Thái |
-|-----|---------------------------|-----------------------------------------------------|------------|---------------|-----------|------------|
-| 01  | Xây dưng database         | Thiết kế database                                   | 08-12-2022 | 08-12-2202 |           |            |
-| 02  | Xây dưng layout cho User  | Thiết kế layout chính cho các trang người dùng      | 09-12-2022 | 09-12-2022 |           |            |
-| 03  | Xây dưng layout cho Writer | Thiết kế layout chính cho các trang dùng cho Write | 09-12-2022 | 09-12-2022 | Nguyễn Quốc Bảo|            |
-| 04  | Xây dựng Layout cho Editor | Thiết kế layout chính cho các trang dùng cho Editer | 09-12-2022 | 09-12-2022 |           |            |
-| 05  | Xây dựng layout cho Admin | Thiết kế layout chính cho các trang dùng cho Admin  | 09-12-2022 | 09-12-2022 |           |            |
-| 06  |                           |                                                     |            |               |           |            |
-| 07  |                           |                                                     |            |               |           |            |
-| 08  |                           |                                                     |            |               |           |            |
-| 09  |                           |                                                     |            |               |           |            |
-| 10  |                           |                                                     |            |               |           |            |
-| 11  |                           |                                                     |            |               |           |            |
-| 12  |                           |                                                     |            |               |           |            |
-| 13  |                           |                                                     |            |               |           |            |
-| 14  |                           |                                                     |            |               |           |            |
-| 15  |                           |                                                     |            |               |           |            |
-| 16  |                           |                                                     |            |               |           |            |
-| 17  |                           |                                                     |            |               |           |            |
-| 18  |                           |                                                     |            |               |           |            |
-| 19  |                           |                                                     |            |               |           |            |
-| 20  |                           |                                                     |            |               |           |            |
