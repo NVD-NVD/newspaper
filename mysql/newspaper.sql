@@ -16,7 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `articles`
+-- Table structure for table `Article`
 --
 
 DROP TABLE IF EXISTS `articles`;
@@ -26,12 +26,14 @@ CREATE TABLE `articles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `createDate` datetime NOT NULL,
+  `updateDate` datetime DEFAULT NULL,
   `abstract` text NOT NULL,
   `content` text NOT NULL,
   `avatar` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
   `type` varchar(20) NOT NULL,
   `author_id` int NOT NULL,
+  `enable` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `title` (`title`),
@@ -41,16 +43,16 @@ CREATE TABLE `articles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `articles`
+-- Dumping data for table `Article`
 --
 
 LOCK TABLES `articles` WRITE;
-/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Article` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Article` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `articles_categories`
+-- Table structure for table `Article_Category`
 --
 
 DROP TABLE IF EXISTS `articles_categories`;
@@ -70,16 +72,16 @@ CREATE TABLE `articles_categories` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `articles_categories`
+-- Dumping data for table `Article_Category`
 --
 
 LOCK TABLES `articles_categories` WRITE;
-/*!40000 ALTER TABLE `articles_categories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `articles_categories` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Article_Category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Article_Category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `articles_tags`
+-- Table structure for table `Article_Tag`
 --
 
 DROP TABLE IF EXISTS `articles_tags`;
@@ -99,16 +101,16 @@ CREATE TABLE `articles_tags` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `articles_tags`
+-- Dumping data for table `Article_Tag`
 --
 
 LOCK TABLES `articles_tags` WRITE;
-/*!40000 ALTER TABLE `articles_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `articles_tags` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Article_Tag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Article_Tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `categories`
+-- Table structure for table `Category`
 --
 
 DROP TABLE IF EXISTS `categories`;
@@ -124,41 +126,16 @@ CREATE TABLE `categories` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categories`
+-- Dumping data for table `Category`
 --
 
 LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `roles`
---
-
-DROP TABLE IF EXISTS `roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `roles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `role` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`),
-  UNIQUE KEY `role` (`role`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `roles`
---
-
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tags`
+-- Table structure for table `Tag`
 --
 
 DROP TABLE IF EXISTS `tags`;
@@ -174,16 +151,16 @@ CREATE TABLE `tags` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tags`
+-- Dumping data for table `Tag`
 --
 
 LOCK TABLES `tags` WRITE;
-/*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tags` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Tag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users`
+-- Table structure for table `User`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -193,13 +170,15 @@ CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `email` varchar(150) NOT NULL,
+  `birthday` datetime DEFAULT NULL,
   `penname` varchar(50) NOT NULL,
   `createDate` datetime NOT NULL,
+  `updateDate` datetime DEFAULT NULL,
   `expr` datetime NOT NULL,
-  `birthday` datetime DEFAULT NULL,
-  `typeAccount` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL,
+  `permission` varchar(50) NOT NULL,
+  `enable` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `username` (`username`),
@@ -210,41 +189,12 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `User`
 --
 
 LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users_roles`
---
-
-DROP TABLE IF EXISTS `users_roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users_roles` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `role_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`),
-  KEY `users_id` (`user_id`),
-  KEY `roles_id` (`role_id`),
-  CONSTRAINT `roles_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users_roles`
---
-
-LOCK TABLES `users_roles` WRITE;
-/*!40000 ALTER TABLE `users_roles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users_roles` ENABLE KEYS */;
+/*!40000 ALTER TABLE `User` DISABLE KEYS */;
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -256,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-08 16:16:21
+-- Dump completed on 2022-12-10 11:58:59
