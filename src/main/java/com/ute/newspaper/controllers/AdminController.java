@@ -20,13 +20,13 @@ public class AdminController extends HttpServlet {
 
         switch (path) {
             case "/index":
-                ServletUtils.forward("/admin-page/pages/index.jsp", req, resp);
+                ServletUtils.forward("/vwAdmin/pages/index.jsp", req, resp);
                 break;
 
             case "about":
                 break;
             default:
-                ServletUtils.forward("/index.jsp", req, resp);
+                ServletUtils.forward("/404.jsp", req, resp);
                 break;
         }
     }

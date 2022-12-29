@@ -28,5 +28,17 @@
                     <span class="ml-2">Quản lý người dùng</span></i>
             </a>
         </div>
+        <div class="sider-content-item">
+            <a href="#" class="text-light">
+                <i class="fa fa-home" aria-hidden="true">
+                    <span class="ml-2">Quản lý nhà văn</span></i>
+            </a>
+        </div>
+        <div class="sider-content-item">
+            <a href="#" class="text-light">
+                <i class="fa fa-home" aria-hidden="true">
+                    <span class="ml-2">Quản lý editer</span></i>
+            </a>
+        </div>
     </div>
 </div>

@@ -1,14 +1,16 @@
 <%@ tag pageEncoding="utf-8" %>
 <%@attribute name="css" fragment="true" required="false" %>
 <%@attribute name="js" fragment="true" required="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Admin dashboard</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin-page/css/index.css">
-    <link rel="stylesheet" href="../../statics/css/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/vwAdmin/css/index.css">
+<%--    <link rel="stylesheet" href="<c:url value='/vwAdmin/css/index.css'/>" />--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <jsp:invoke fragment="css" />
 </head>
