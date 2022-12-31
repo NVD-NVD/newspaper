@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="auth.css">
 </head>
 <body>
-<div class="container-fluid d-flex flex-row justify-content-center h-auto">
+<div class="container-fluid d-flex flex-row justify-content-center h-auto signup-page">
 <%--    <div class="signup-logo w-auto">--%>
 <%--        <img src="${pageContext.request.contextPath}/public/images/logo.png" alt="">--%>
 <%--    </div>--%>
-    <div class="card w-50">
+    <div class="card w-50 mt-5">
         <h2 class="card-title text-center">Đăng Ký Tài khoản</h2>
         <div class="card-body py-md-4">
             <form _lpchecked="1" id="mainForm" name="mainForm">

@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 
-body{
-    /*background: #fff ;*/
-    /*font-family: 'PT Sans', sans-serif;*/
-
+body {
+}
+.signup-page{
     background-image: url("../public/images/logo.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
 }
+
 h2{
     padding-top: 1.5rem;
 }

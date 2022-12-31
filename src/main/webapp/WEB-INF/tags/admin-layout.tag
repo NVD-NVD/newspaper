@@ -9,77 +9,41 @@
     <meta charset="UTF-8">
     <title>Admin dashboard</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/vwAdmin/css/index.css">
-<%--    <link rel="stylesheet" href="<c:url value='/vwAdmin/css/index.css'/>" />--%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/vwAdmin/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <jsp:invoke fragment="css" />
+    <jsp:invoke fragment="css"/>
 </head>
 <body>
-<div class="main">
-    <div class="main-menu">
-        <h1>Logo</h1>
-        <div class="menu-content">
-            <ul>
-                <li>
-                    <a href="#" class="text-light">
-                        <i class="fa fa-home" aria-hidden="true">
-                            <span class="ml-2">Quản lý chuyên mục</span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="text-light">
-                        <i class="fa fa-home" aria-hidden="true">
-                            <span class="ml-2">Quản lý nhãn</span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="text-light">
-                        <i class="fa fa-home" aria-hidden="true">
-                            <span class="ml-2">Quản lý bài viết</span>
-                        </i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="text-light">
-                        <i class="fa fa-home" aria-hidden="true">
-                            <span class="ml-2">Quản lý người dùng</span>
-                        </i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="main-left">
-        <div id="header">
-            <div class="main-left-header">
-                <div class="header-content"></div>
-                <div class="header-content header-search">
-                    <div class="input-group input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm"
-                  >Small</span
-                  >
-                        </div>
-                        <input
-                                type="text"
-                                class="form-control"
-                                aria-label="Small"
-                                aria-describedby="inputGroup-sizing-sm"
-                        />
-                    </div>
-                </div>
-                <div class="header-content header-account">Account</div>
-            </div>
-            <hr class="main-left-hr" />
-        </div>
+<jsp:include page="../../vwAdmin/components/header.jsp" />
+<div class="container-fluid">
+    <div class="row">
+        <jsp:include page="../../vwAdmin/components/sider.jsp" />
 
-        <div class="main-content">
-            <jsp:doBody/>
-        </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                </div>
+            </div>
+            <div class="pt-3 pb-2 mb-3"></div>
+            <div class="table-responsive">
+                <jsp:doBody/>
+            </div>
+        </main>
     </div>
 </div>
-    <jsp:invoke fragment="js" />
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+<jsp:invoke fragment="js"/>
 </body>
 </html>
