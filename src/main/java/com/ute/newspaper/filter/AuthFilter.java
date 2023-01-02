@@ -1,5 +1,6 @@
 package com.ute.newspaper.filter;
 
+import com.ute.newspaper.entities.User;
 import com.ute.newspaper.utils.ServletUtils;
 
 import javax.servlet.*;

@@ -19,13 +19,21 @@
         <div class="card w-75">
             <h2 class="card-title text-center">Đăng Nhập</h2>
             <div class="card-body py-md-4">
-                <form _lpchecked="1" id="mainForm" name="mainForm">
+                <c:if test="${hasError}">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Login failed!</strong> ${errorMessage}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </c:if>
+                <form _lpchecked="1" id="mainForm" name="mainForm" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="username" placeholder="Tên Đăng Nhập">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Tên Đăng Nhập">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control" id="password" placeholder="Mật Khẩu">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Mật Khẩu">
                     </div>
                     <div class="form-group">
                         <div class="form-check-inline">

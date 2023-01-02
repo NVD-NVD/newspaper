@@ -23,13 +23,19 @@
 <!--        <url-pattern>/*</url-pattern>-->
 <!--    </filter-mapping>-->
 
-<!--    <filter-mapping>-->
-<!--        <filter-name>SessionInitFilter</filter-name>-->
-<!--        <url-pattern>/*</url-pattern>-->
-<!--    </filter-mapping>-->
+    <filter-mapping>
+        <filter-name>SessionInitFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AdminAuthFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
 
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
-        <url-pattern>/Account/Profile</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
+
 </web-app>

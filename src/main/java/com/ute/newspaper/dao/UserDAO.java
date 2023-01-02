@@ -7,16 +7,19 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class UserDAO {
-    public List<User> findAll(){
+    public static List<User> findAll(){
         String query = "SELECT * FROM users";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query).executeAndFetch(User.class);
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
+        return null;
     }
-    public void add(User user){
-        String query = "insert into newspaper.users (username, password, name, email, birthday, penname, createDate, updateDate, expr,\n" +
+    public static void add(User user){
+        String query = "INSERT INTO users (username, password, name, email, birthday, penname, createDate, updateDate, expr,\n" +
                 "                             permission, enable)\n" +
-                "values (:username, :password, :name, :email, :birthday, :penname, :createDate, :updateDate, :expr,\n" +
+                "VALUES (:username, :password, :name, :email, :birthday, :penname, :createDate, :updateDate, :expr,\n" +
                 "        :permission, :enable)";
         try (Connection con = DbUtils.getConnection()) {
             con.createQuery(query)
@@ -31,7 +34,39 @@ public class UserDAO {
                     .addParameter("expr", user.getExpr())
                     .addParameter("permission", user.getPermission())
                     .addParameter("enable", user.isEnable())
+                    .executeUpdate();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public static User findByUsername(String username) {
+        String query = "select * from users where username = :username";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("username", username)
                     .executeAndFetch(User.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
+        }
+    }
+
+    public static User findByEmail(String email) {
+        String query = "select * from users where email = :email";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("email", email)
+                    .executeAndFetch(User.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
         }
     }
 }
