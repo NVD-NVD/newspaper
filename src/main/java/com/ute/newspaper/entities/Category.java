@@ -1,4 +1,4 @@
-package com.ute.newspaper.beans;
+package com.ute.newspaper.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Tag {
+public class Category {
     private int id;
     private String title;
     private Date createDate;

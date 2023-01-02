@@ -1,6 +1,6 @@
 package com.ute.newspaper.dao;
 
-import com.ute.newspaper.beans.User;
+import com.ute.newspaper.entities.User;
 import com.ute.newspaper.utils.DbUtils;
 import org.sql2o.Connection;
 

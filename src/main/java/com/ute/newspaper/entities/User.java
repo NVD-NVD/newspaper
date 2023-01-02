@@ -1,4 +1,4 @@
-package com.ute.newspaper.beans;
+package com.ute.newspaper.entities;
 
 import lombok.*;
 

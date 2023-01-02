@@ -1,4 +1,4 @@
-# Đồ Án Môn Học Lập Trình Wed
+# Đồ Án Môn Học Lập Trình Web
 ## Tên đề tài:
 ```
 Xậy Xây Dựng Ứng Dụng Web Báo Điện Tử
@@ -9,12 +9,12 @@ Xậy Xây Dựng Ứng Dụng Web Báo Điện Tử
 Ngô Ngọc Đăng Khoa
 ```
 ## Thông tin thành viên nhóm:
-| Họ và Tên   | Mã Số Sinh Viên |
-|-------------|-----------------|
-| Nguyễn Văn Đạt | 16110050        |
-| Phan Minh Sang | 19146250       |
-|Nguyễn Quốc Bảo | 19146157     |
-|Lê Mạnh Tuấn Phan | 19110422         |
+| Họ và Tên   | Mã Số Sinh Viên | Tên Github  |
+|-------------|-----------------|-------------|
+| Nguyễn Văn Đạt | 16110050        | NVD-NVD     |
+| Phan Minh Sang | 19146250        | bunquadi    |
+|Nguyễn Quốc Bảo | 19146157        | Bao27032017 |
+|Lê Mạnh Tuấn Phan | 19110422        | Tuanphan123 |
 
 ## Yêu cầu của đề tài
 ``` 
