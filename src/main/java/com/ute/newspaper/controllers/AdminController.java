@@ -11,6 +11,7 @@ import com.ute.newspaper.entities.User;
 import com.ute.newspaper.services.CategoryService;
 import com.ute.newspaper.utils.ServletUtils;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +25,7 @@ import java.util.List;
 public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        processRequest(req, resp);
         String path = req.getPathInfo();
         if (path == null || path.equals("/")) {
             path = "/managerArticle";
@@ -86,8 +88,8 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        processRequest(req, resp);
         String path = req.getPathInfo();
-
         switch (path) {
             case "/index":
 
@@ -174,6 +176,7 @@ public class AdminController extends HttpServlet {
     }
 
     private void addTag(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String title = req.getParameter("title");
         Tag tag = new Tag();
         tag.setTitle(title);

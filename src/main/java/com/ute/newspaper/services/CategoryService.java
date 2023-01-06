@@ -7,11 +7,14 @@ import com.ute.newspaper.utils.ServletUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.time.LocalDateTime;
 
 public class CategoryService {
     public static void add(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+        req.setCharacterEncoding("UTF-8");
         String title = req.getParameter("title");
+        System.out.println("Add category:" + title);
         Category category = new Category();
         category.setTitle(title);
         LocalDateTime dateTime = LocalDateTime.now();
