@@ -132,9 +132,20 @@ public class AuthController extends HttpServlet {
                     url = "/index.jsp";
 
                 if (user.getPermission().equals("admin")){
-                    url = "/admin/index";
+                    url = "/admin";
                 }
-
+                if (user.getPermission().equals("writer")){
+                    url = "/writer";
+                }
+                if (user.getPermission().equals("reader")){
+                    url = "/reader";
+                }
+                if (user.getPermission().equals("editor")){
+                    url = "/editor";
+                }
+                if (user.getPermission().equals("user")){
+                    url = "/user";
+                }
                 ServletUtils.redirect(url, req, resp);
             } else {
                 req.setAttribute("hasError", true);
@@ -152,7 +163,7 @@ public class AuthController extends HttpServlet {
         session.setAttribute("auth", false);
         session.setAttribute("authUser", new User());
 
-        String url = "/home/index";
+        String url = "/main/";
         ServletUtils.redirect(url, req, resp);
     }
 

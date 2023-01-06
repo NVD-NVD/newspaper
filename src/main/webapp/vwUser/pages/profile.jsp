@@ -6,7 +6,7 @@
 
 <t:user-layout>
     <jsp:body>
-        <h1>User index</h1>
+        <h1>User profile</h1>
     </jsp:body>
 
 </t:user-layout>

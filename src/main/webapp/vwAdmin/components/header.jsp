@@ -9,8 +9,25 @@
     </button>
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="${pageContext.request.contextPath}/auth/logout">Sign out</a>
+        <form id="frmLogout" method="post" action="${pageContext.request.contextPath}/auth/logout"></form>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownR" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hi, <b>${authUser.name}!</b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/Account/Profile">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Profile
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    Sign Out
+                </a>
+            </div>
         </li>
+<%--        <li class="nav-item text-nowrap">--%>
+<%--            <a class="nav-link" href="${pageContext.request.contextPath}/auth/logout">Sign out</a>--%>
+<%--        </li>--%>
     </ul>
 </nav>

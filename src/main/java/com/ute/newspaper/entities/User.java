@@ -18,6 +18,7 @@ public class User {
     @NonNull private String email;
     @NonNull private LocalDateTime birthday;
     private String penname;
+    private String avatar;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
     private LocalDateTime expr;

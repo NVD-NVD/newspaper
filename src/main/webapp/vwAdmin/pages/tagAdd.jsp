@@ -4,9 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<t:user-layout>
-    <jsp:body>
-        <h1>User index</h1>
-    </jsp:body>
+<jsp:useBean id="tags" scope="request" type="java.util.List<com.ute.newspaper.entities.Tag>"/>
 
-</t:user-layout>
+<t:admin-layout>
+    <jsp:body>
+        <h1>Thêm tag mới</h1>
+        <form action="" class="addTag" method="post">
+
+        </form>
+    </jsp:body>
+</t:admin-layout>

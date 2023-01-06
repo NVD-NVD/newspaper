@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/vwMain/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/share/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/vwMain/css/carousel.css">
 <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/vwMain/css/sider.css">--%>
 
@@ -19,7 +20,7 @@
     <jsp:invoke fragment="css"/>
 </head>
 <body>
-<jsp:include page="../../vwMain/componnents/header.jsp" />
+<jsp:include page="../../share/components/header.jsp" />
 <jsp:include page="../../vwMain/componnents/carousel.jsp" />
 <div class="container-fluid">
     <jsp:doBody/>

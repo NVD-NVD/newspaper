@@ -1,5 +1,7 @@
 package com.ute.newspaper.controllers;
 
+import com.ute.newspaper.utils.ServletUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +13,22 @@ import java.io.IOException;
 public class EditorController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        String path = req.getPathInfo();
+        if (path == null || path.equals("/")) {
+            path = "/index";
+        }
+
+        switch (path) {
+            case "/index":
+                ServletUtils.forward("/vwEditor/pages/index.jsp", req, resp);
+                break;
+
+            case "about":
+                break;
+            default:
+                ServletUtils.forward("/404.jsp", req, resp);
+                break;
+        }
     }
 
     @Override

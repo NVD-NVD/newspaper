@@ -95,7 +95,7 @@
                     <input type="text" class="form-control d-none" id="penname" name="penname" placeholder="Bút danh">
                 </div>
                 <div class="d-flex flex-row align-items-center justify-content-between">
-                    <a href="/auth/login">Đăng nhập</a>
+                    <a href="${pageContext.request.contextPath}/auth/login">Đăng nhập</a>
                     <button class="btn btn-primary">Tạo tài khoản</button>
                 </div>
             </form>

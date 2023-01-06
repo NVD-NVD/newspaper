@@ -17,9 +17,9 @@ public class UserDAO {
         return null;
     }
     public static void add(User user){
-        String query = "INSERT INTO users (username, password, name, email, birthday, penname, createDate, updateDate, expr,\n" +
+        String query = "INSERT INTO users (username, password, name, email, birthday, penname, avatar, createDate, updateDate, expr,\n" +
                 "                             permission, enable)\n" +
-                "VALUES (:username, :password, :name, :email, :birthday, :penname, :createDate, :updateDate, :expr,\n" +
+                "VALUES (:username, :password, :name, :email, :birthday, :penname, :avatar, :createDate, :updateDate, :expr,\n" +
                 "        :permission, :enable)";
         try (Connection con = DbUtils.getConnection()) {
             con.createQuery(query)
@@ -29,6 +29,7 @@ public class UserDAO {
                     .addParameter("email", user.getEmail())
                     .addParameter("birthday", user.getBirthday())
                     .addParameter("penname", user.getPenname())
+                    .addParameter("avatar", user.getAvatar())
                     .addParameter("createDate", user.getCreateDate())
                     .addParameter("updateDate", user.getUpdateDate())
                     .addParameter("expr", user.getExpr())
