@@ -14,10 +14,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/vwMain/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/share/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/vwMain/css/carousel.css">
-<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/vwMain/css/sider.css">--%>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <jsp:invoke fragment="css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <jsp:invoke fragment="css"/>
 </head>
 <body>
 <jsp:include page="../../share/components/header.jsp" />

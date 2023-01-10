@@ -5,47 +5,95 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <t:writer-layout>
-      <jsp:attribute name="js">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <jsp:attribute name="js">
+    <script src="https://cdn.tiny.cloud/1/1mpmusmh4k9anzxq78fae7aql3yzxlmhh25lko3doah4bn74/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
     <script>
         tinymce.init({
-            selector: '#txtFullDes',
+            selector: 'textarea',
             height: 450,
-            plugins: 'paste image link autolink lists table media',
+            plugins: 'paste image code link autolink lists table media',
             menubar: false,
             toolbar: [
-                'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright | forecolor backcolor | table link image media'
+                'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright | forecolor backcolor | table link image media | code'
             ],
-            // entity_encoding: 'raw'
+            image_title: true,
+            /* enable automatic uploads of images represented by blob or data URIs*/
+            automatic_uploads: true,
+            /*
+              URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+              images_upload_url: 'postAcceptor.php',
+              here we add custom filepicker only to Image dialog
+            */
+            file_picker_types: 'image',
+            /* and here's our custom image picker*/
+            file_picker_callback: (cb, value, meta) => {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+
+                input.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+
+                    const reader = new FileReader();
+                    reader.addEventListener('load', () => {
+                        /*
+                          Note: Now we need to register the blob in TinyMCEs image blob
+                          registry. In the next release this part hopefully won't be
+                          necessary, as we are looking to handle it internally.
+                        */
+                        const id = 'blobid' + (new Date()).getTime();
+                        const blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                        const base64 = reader.result.split(',')[1];
+                        const blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+
+                        /* call the callback and populate the Title field with the file name */
+                        cb(blobInfo.blobUri(), { title: file.name });
+                    });
+                    reader.readAsDataURL(file);
+                });
+
+                input.click();
+            },
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+
         });
     </script>
-  </jsp:attribute>
+    </jsp:attribute>
     <jsp:body>
-        <div class="list-add d-flex justify-content-between">
-            <h1>Thêm bài viết mới</h1>
-            <button type="button" class="btn btn-primary" id="addTag" href="${pageContext.request.contextPath}/writer/add">Thêm bài viết</button>
-        </div>
 
-        <form action="" method="post">
+        <form enctype="multipart/form-data" method="post">
             <div class="card">
                 <h4 class="card-header">
-                    WYSIWYG HTML Editor
+                    Thêm bài viết mới
                 </h4>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="txtTinyDes">Description</label>
-                        <input type="text" class="form-control" id="txtTinyDes" name="TinyDes" autofocus />
+                        <label for="txtTitle">Tên bài viết</label>
+                        <input type="text" class="form-control" id="txtTitle" name="title" autofocus/>
                     </div>
                     <div class="form-group">
-                        <label for="txtFullDes">Full Description</label>
-                        <textarea id="txtFullDes" name="FullDes"></textarea>
+                        <label for="txtAvatar">Ảnh đại diện</label>
+                        <input type="file" class="form-control" id="txtAvatar" name="avatar"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtSubDes">Mô tả</label>
+                        <textarea id="txtSubDes" name="subDes"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFullDes">Bài viết</label>
+                        <textarea id="txtFullDes" name="fullDes"></textarea>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                        Save
-                    </button>
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <a href="${pageContext.request.contextPath}/writer/list">Huỷ</a>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            Lưu
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
