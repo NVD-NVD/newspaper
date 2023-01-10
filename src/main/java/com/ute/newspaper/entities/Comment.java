@@ -6,17 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Category {
+public class Comment {
     private int id;
-    private String title;
-    private LocalDateTime createDate;
-    private LocalDateTime updateDate;
-    private int parent_id;
-    private boolean enable;
+    private int article_id;
+    private int user_id;
+    private LocalDateTime date;
+    private String comment;
 }

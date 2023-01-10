@@ -22,5 +22,6 @@ public class Article {
     private String status;
     private String type;
     private int author_id;
+    private int view;
     private boolean enable;
 }
