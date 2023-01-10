@@ -22,14 +22,14 @@ public class TagDao {
         String query = "INSERT INTO tags (title, createDate, updateDate, enable)" +
                 "VALUES (:title, :createDate, :updateDate, :enable)";
         try (Connection con = DbUtils.getConnection()) {
-            con.createQuery(query)
+            int key = con.createQuery(query)
                     .addParameter("title", tag.getTitle())
                     .addParameter("createDate", tag.getCreateDate())
                     .addParameter("updateDate", tag.getUpdateDate())
                     .addParameter("enable", tag.isEnable())
-                    .executeUpdate();
-        }catch (Exception ex){
-            ex.printStackTrace();
+                    .executeUpdate()
+                    .getKey(Integer.class);
+            System.out.println("cateory id after insert: " + key);
         }
     }
 }

@@ -47,11 +47,11 @@ public class ArticleDao {
         }
     }
 
-    public static void add(Article article){
+    public static Article add(Article article){
         String query = "INSERT INTO articles (title, abstract_content, content , author_id, status, avatar, createDate, updateDate, enable)" +
                 "VALUES (:title, :abstract_content, :content , :author_id, :status, :avatar, :createDate, :updateDate, :enable)";
         try (Connection con = DbUtils.getConnection()) {
-            con.createQuery(query)
+            int key = con.createQuery(query)
                     .addParameter("title", article.getTitle())
                     .addParameter("abstract_content", article.getAbstract_content())
                     .addParameter("content", article.getContent())
@@ -61,9 +61,11 @@ public class ArticleDao {
                     .addParameter("createDate", article.getCreateDate())
                     .addParameter("updateDate", article.getUpdateDate())
                     .addParameter("enable", article.isEnable())
-                    .executeUpdate();
-        }catch (Exception ex){
-            ex.printStackTrace();
+                    .executeUpdate()
+                    .getKey(Integer.class);
+
+            Article a = findByID(key);
+            return a;
         }
     }
 

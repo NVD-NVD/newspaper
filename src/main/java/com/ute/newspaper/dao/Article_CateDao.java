@@ -17,4 +17,16 @@ public class Article_CateDao {
         }
         return null;
     }
+    public static void add(Article_Category articleCategory){
+        String query = "INSERT INTO articles_categories (article_id, category_id)" +
+                "VALUES (:article_id, :category_id)";
+        try (Connection con = DbUtils.getConnection()) {
+            con.createQuery(query)
+                    .addParameter("article_id", articleCategory.getArticle_id())
+                    .addParameter("category_id", articleCategory.getCategory_id())
+                    .executeUpdate();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }
