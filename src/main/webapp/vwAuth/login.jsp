@@ -29,11 +29,11 @@
                 </c:if>
                 <form _lpchecked="1" id="mainForm" name="mainForm" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Tên Đăng Nhập">
+                        <input type="text" class="form-control" id="username" name="username"  placeholder="Tên Đăng Nhập">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Mật Khẩu">
+                        <input type="password" class="form-control" id="password" name="password"  placeholder="Mật Khẩu">
                     </div>
                     <div class="form-group">
                         <div class="form-check-inline">
