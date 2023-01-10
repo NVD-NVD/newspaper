@@ -14,13 +14,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/share/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/vwWriter/css/sider.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/vwWriter/css/style.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <jsp:invoke fragment="css"/>
 </head>
 <body>
 <jsp:include page="../../share/components/header.jsp" />
-<div class="container-fluid">
+<div class="container-fluid mt-5 pt-5">
     <div class="row">
         <jsp:include page="../../vwWriter/components/sider.jsp"/>
 
@@ -47,6 +46,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
-
+<%--<script type="text/javascript" src="${pageContext.request.contextPath}/share/js/header.js"></script>--%>
 </body>
 </html>
