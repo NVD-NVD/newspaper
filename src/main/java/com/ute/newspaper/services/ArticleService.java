@@ -3,6 +3,7 @@ package com.ute.newspaper.services;
 import com.ute.newspaper.dao.ArticleDao;
 import com.ute.newspaper.dao.TagDao;
 import com.ute.newspaper.entities.Article;
+import com.ute.newspaper.entities.Article_Category;
 import com.ute.newspaper.entities.Tag;
 import com.ute.newspaper.entities.User;
 import com.ute.newspaper.utils.ServletUtils;
@@ -46,6 +47,7 @@ public class ArticleService {
         String title = req.getParameter("title");
         String sub = req.getParameter("subDes");
         String full = req.getParameter("fullDes");
+        int categoryID = Integer.parseInt(req.getParameter("categoryID"));
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("authUser");
         String filename = null;
@@ -83,7 +85,15 @@ public class ArticleService {
         article.setAvatar("public/images/article/" + filename);
         article.setEnable(true);
 
-        ArticleDao.add(article);
+        article = ArticleDao.add(article);
+
+        if (categoryID != -1){
+            Article_Category articleCategory = new Article_Category();
+            articleCategory.setArticle_id(article.getId());
+            articleCategory.setCategory_id(categoryID);
+        }
+
+
     }
 
     public static void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
