@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class Article_Category {
     private int id;
-    private int articles_id;
-    private int categories_id;
+    private int article_id;
+    private int category_id;
 
 }
