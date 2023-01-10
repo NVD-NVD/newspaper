@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="authUser" scope="session" type="com.ute.newspaper.entities.User" />
+<jsp:useBean id="authUser" scope="session" type="com.ute.newspaper.entities.User"/>
 
 <div class="header-blue">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
@@ -18,39 +18,31 @@
                     <%--Start dropdown--%>
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Danh mục
                             </button>
                             <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                 <c:forEach items="${categories}" var="c">
-                                    <li class="dropdown-item"><a href="#">${c.title}</a></li>
-                                </c:forEach>
-
-<%--                                <li class="dropdown-item"><a href="#">Some action</a></li>--%>
-<%--                                <li class="dropdown-item"><a href="#">Some other action</a></li>--%>
-                                <li class="dropdown-divider"></li>
-                                <li class="dropdown-submenu">
-                                    <a  class="dropdown-item" tabindex="-1" href="#">Hover me for more options</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-item"><a tabindex="-1" href="#">Second level</a></li>
-                                        <li class="dropdown-submenu">
-                                            <a class="dropdown-item" href="#">Even More..</a>
+                                    <li class="dropdown-submenu">
+                                        <c:if test="${c.parentID == -1}">
+                                            <a class="dropdown-item" tabindex="-1" href="${pageContext.request.contextPath}/main/category?id=${c.id}">${c.title}</a>
                                             <ul class="dropdown-menu">
-                                                <li class="dropdown-item"><a href="#">3rd level</a></li>
-                                                <li class="dropdown-submenu"><a class="dropdown-item" href="#">another level</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li class="dropdown-item"><a href="#">4th level</a></li>
-                                                        <li class="dropdown-item"><a href="#">4th level</a></li>
-                                                        <li class="dropdown-item"><a href="#">4th level</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown-item"><a href="#">3rd level</a></li>
+                                                <c:set var="c1ID" value="c.id"/>
+                                                <c:forEach items="${categories}" var="c2">
+                                                    <c:set var="c2ID" value="c2.parentID"/>
+<%--                                                    <c:if test="${c1ID == c2ID}">--%>
+                                                    <c:if test="${c.id == c2.parentID}">
+                                                        <li class="dropdown-item">
+                                                            <a class="text-dark" tabindex="-1"
+                                                               href="${pageContext.request.contextPath}/main/category?id=${c2.id}">${c2.title}</a>
+                                                        </li>
+                                                    </c:if>
+                                                </c:forEach>
                                             </ul>
-                                        </li>
-                                        <li class="dropdown-item"><a href="#">Second level</a></li>
-                                        <li class="dropdown-item"><a href="#">Second level</a></li>
-                                    </ul>
-                                </li>
+                                        </c:if>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </li>
@@ -66,13 +58,15 @@
                 </form>
                 <c:choose>
                     <c:when test="${auth}">
-                        <form id="frmLogout" method="post" action="${pageContext.request.contextPath}/auth/logout"></form>
+                        <form id="frmLogout" method="post"
+                              action="${pageContext.request.contextPath}/auth/logout"></form>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownR" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownR" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Hi, <b>${authUser.name}</b>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="${pageContext.request.contextPath}/Account/Profile">
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/user/profile">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     Profile
                                 </a>
@@ -88,7 +82,8 @@
                         <span class="navbar-text">
                                 <a class="login" href="${pageContext.request.contextPath}/auth/login">Đăng Nhập</a>
                         </span>
-                        <a class="btn btn-light action-button" role="button" href="${pageContext.request.contextPath}/auth/signup">Đăng Ký</a>
+                        <a class="btn btn-light action-button" role="button"
+                           href="${pageContext.request.contextPath}/auth/signup">Đăng Ký</a>
                     </c:otherwise>
                 </c:choose>
             </div>

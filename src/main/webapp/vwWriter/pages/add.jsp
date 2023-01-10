@@ -74,6 +74,24 @@
                         <input type="text" class="form-control" id="txtTitle" name="title" autofocus/>
                     </div>
                     <div class="form-group">
+                        <label class="form-check-label">
+                            Thuộc danh mục:
+                            <select name="categoryID" id="categoryID">
+                                <c:choose>
+                                    <c:when test="${categories.size() == 0}">
+                                        <option value="-1">Không có danh mục để chọn</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="-1" selected>None</option>
+                                        <c:forEach items="${categories}" var="c">
+                                            <option value="${c.id}">${c.title}</option>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group">
                         <label for="txtAvatar">Ảnh đại diện</label>
                         <input type="file" class="form-control" id="txtAvatar" name="avatar"/>
                     </div>

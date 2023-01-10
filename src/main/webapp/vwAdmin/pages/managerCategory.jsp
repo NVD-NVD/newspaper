@@ -5,7 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <jsp:useBean id="categories" scope="request" type="java.util.List<com.ute.newspaper.entities.Category>"/>
-
+<jsp:useBean id="editor" scope="request" type="java.util.List<com.ute.newspaper.entities.User>"/>
+<jsp:useBean id="editorCategory" scope="request" type="java.util.List<com.ute.newspaper.entities.Editor_Category>"/>
 <t:admin-layout>
     <jsp:attribute name="js">
     <script>
@@ -27,7 +28,8 @@
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <input class="form-control form-control-dark w-100 border rounded" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-dark w-100 border rounded" type="text" placeholder="Search"
+                   aria-label="Search">
             <div class="add-cat">
                 <button href="#" type="button" class="btn btn-primary" onclick="addTag()">Thêm</button>
             </div>
@@ -43,18 +45,19 @@
                                    placeholder="Nhập tên tag mới">
                         </label>
                         <label class="form-check-label">
-                            <<select name="parentID" id="parentID">
-                            <c:choose>
-                                <c:when test="${categories.size() == 0}">
-                                    <option value="-1">Không có danh mục để chọn</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:forEach items="${categories}" var="c">
+                            <select name="parentID" id="parentID">
+                                <c:choose>
+                                    <c:when test="${categories.size() == 0}">
+                                        <option value="-1">Không có danh mục để chọn</option>
+                                    </c:when>
+                                    <c:otherwise>
                                         <option value="-1" selected>None</option>
-                                        <option value="${c.id}">${c.title}</option>
-                                    </c:forEach>
-                                </c:otherwise>
-                            </c:choose>
+                                        <c:forEach items="${categories}" var="c">
+
+                                            <option value="${c.id}">${c.title}</option>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
                             </select>
                         </label>
                     </div>
@@ -72,8 +75,8 @@
                 <th>#</th>
                 <th>Title</th>
                 <th>Ngày tạo</th>
-                <th>Số lượng bài viết</th>
-                <th>Trạng thái</th>
+                <th>Danh mục cha</th>
+                <th>Phụ trách</th>
                 <th>&nbsp;</th>
             </tr>
             </thead>
@@ -90,8 +93,37 @@
                             <td>${loop.count}</td>
                             <td>${c.title}</td>
                             <td>${c.createDate}</td>
-                            <td>&nbsp;</td>
-                            <td>${c.enable}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${c.parentID == null}">
+                                        &nbsp;
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:set var="pID" value="${c.parentID}"/>
+                                        <c:forEach items="${categories}" var="cate">
+                                            <c:set var="cateID" value="${cate.id}"/>
+                                            <c:if test="${pID == cateID}">
+                                                ${cate.title}
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td>
+                                <c:set var="cID" value="${c.id}"/>
+                                <c:forEach items="${editorCategory}" var="ec">
+                                    <c:set var="ecCID" value="${ec.category_id}"/>
+                                    <c:if test="${cID == ecCID}">
+                                        <c:set var="ecEID" value="${ec.user_id}"/>
+                                        <c:forEach items="${editor}" var="e">
+                                            <c:set var="eID" value="${e.id}"/>
+                                            <c:if test="${ecEID == eID}">
+                                                ${e.username}
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:if>
+                                </c:forEach>
+                            </td>
                             <td>
                                 <div class="activities">
                                     <button href="#" type="button" class="btn btn-primary">Change Status</button>

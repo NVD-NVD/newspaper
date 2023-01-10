@@ -4,11 +4,9 @@ import com.ute.newspaper.dao.ArticleDao;
 import com.ute.newspaper.dao.CategoryDao;
 import com.ute.newspaper.dao.TagDao;
 import com.ute.newspaper.dao.UserDAO;
-import com.ute.newspaper.entities.Article;
-import com.ute.newspaper.entities.Category;
-import com.ute.newspaper.entities.Tag;
-import com.ute.newspaper.entities.User;
+import com.ute.newspaper.entities.*;
 import com.ute.newspaper.services.CategoryService;
+import com.ute.newspaper.services.EditorCategoryService;
 import com.ute.newspaper.utils.ServletUtils;
 
 import javax.servlet.ServletConfig;
@@ -72,7 +70,11 @@ public class AdminController extends HttpServlet {
 
             case "/managerCategory":
                 List<Category> categories = CategoryDao.findAll();
+                List<User> editor = UserService.findAll();
+                List<Editor_Category> editorCategory = EditorCategoryService.findAll();
                 req.setAttribute("categories", categories);
+                req.setAttribute("editor", editor);
+                req.setAttribute("editorCategory", editorCategory);
                 ServletUtils.forward("/vwAdmin/pages/managerCategory.jsp", req, resp);
                 break;
 
@@ -119,6 +121,7 @@ public class AdminController extends HttpServlet {
 
             case "/managerCategory":
                 CategoryService.add(req, resp);
+                ServletUtils.redirect("/admin/managerCategory", req, resp);
                 break;
 
             case "/managerSubAdmin":
