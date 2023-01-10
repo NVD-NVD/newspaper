@@ -17,6 +17,6 @@ public class Category {
     private String title;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
-    private int parent_id;
+    private int parentID;
     private boolean enable;
 }

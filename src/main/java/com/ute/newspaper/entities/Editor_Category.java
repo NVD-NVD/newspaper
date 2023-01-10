@@ -15,5 +15,5 @@ public class Editor_Category {
     private int id;
     private int user_id;
     private int category_id;
-    private LocalDateTime createDate;
+    private LocalDateTime createdDate;
 }
