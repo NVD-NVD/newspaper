@@ -1,6 +1,7 @@
 package com.ute.newspaper.dao;
 
 import com.ute.newspaper.entities.Article;
+import com.ute.newspaper.entities.User;
 import com.ute.newspaper.utils.DbUtils;
 import org.sql2o.Connection;
 
@@ -16,22 +17,20 @@ public class ArticleDao {
         }
         return null;
     }
-
-    public static void add(Article article){
-        String query = "INSERT INTO articles (title, createDate, updateDate, enable)" +
-                "VALUES (:title, :createDate, :updateDate, :enable)";
+    public static Article findByID(int id) {
+        String query = "SELECT * FROM articles WHERE id = :id";
         try (Connection con = DbUtils.getConnection()) {
-            con.createQuery(query)
-                    .addParameter("title", article.getTitle())
-                    .addParameter("createDate", article.getCreateDate())
-                    .addParameter("updateDate", article.getUpdateDate())
-                    .addParameter("enable", article.isEnable())
-                    .executeUpdate();
-        }catch (Exception ex){
-            ex.printStackTrace();
+            List<Article> list = con.createQuery(query)
+                    .addParameter("id", id)
+                    .executeAndFetch(Article.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
         }
     }
-
     public static List<Article> findAllByUserID(int author_id) {
         String query = "SELECT * FROM articles WHERE author_id = :author_id";
         try (Connection con = DbUtils.getConnection()) {
@@ -47,4 +46,25 @@ public class ArticleDao {
             return null;
         }
     }
+
+    public static void add(Article article){
+        String query = "INSERT INTO articles (title, abstract_content, content , author_id, status, avatar, createDate, updateDate, enable)" +
+                "VALUES (:title, :abstract_content, :content , :author_id, :status, :avatar, :createDate, :updateDate, :enable)";
+        try (Connection con = DbUtils.getConnection()) {
+            con.createQuery(query)
+                    .addParameter("title", article.getTitle())
+                    .addParameter("abstract_content", article.getAbstract_content())
+                    .addParameter("content", article.getContent())
+                    .addParameter("author_id", article.getAuthor_id())
+                    .addParameter("status", article.getStatus())
+                    .addParameter("avatar", article.getAvatar())
+                    .addParameter("createDate", article.getCreateDate())
+                    .addParameter("updateDate", article.getUpdateDate())
+                    .addParameter("enable", article.isEnable())
+                    .executeUpdate();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
 }

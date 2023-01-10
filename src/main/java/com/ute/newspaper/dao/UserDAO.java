@@ -1,5 +1,6 @@
 package com.ute.newspaper.dao;
 
+import com.ute.newspaper.entities.Article;
 import com.ute.newspaper.entities.User;
 import com.ute.newspaper.utils.DbUtils;
 import org.sql2o.Connection;
@@ -15,6 +16,20 @@ public class UserDAO {
             ex.printStackTrace();
         }
         return null;
+    }
+    public static User findByID(int id) {
+        String query = "SELECT * FROM users WHERE id = :id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("id", id)
+                    .executeAndFetch(User.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
+        }
     }
     public static void add(User user){
         String query = "INSERT INTO users (username, password, name, email, birthday, penname, avatar, createDate, updateDate, expr,\n" +
