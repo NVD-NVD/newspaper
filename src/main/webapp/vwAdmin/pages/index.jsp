@@ -29,9 +29,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${users}" var="u">
+                    <c:forEach items="${users}" var="u" varStatus="loop">
                         <tr>
-                            <td>${u.id}</td>
+                            <td>${loop.count}</td>
                             <td>${u.name}</td>
                             <td>${u.email}</td>
                             <td>${u.username}</td>

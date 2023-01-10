@@ -30,9 +30,9 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${articles}" var="w">
+                    <c:forEach items="${articles}" var="w" varStatus="loop">
                         <tr>
-                            <td>${w.id}</td>
+                            <td>${loop.count}</td>
                             <td>${w.title}</td>
                             <td>${w.createDate}</td>
                             <td>${w.updateDate}</td>

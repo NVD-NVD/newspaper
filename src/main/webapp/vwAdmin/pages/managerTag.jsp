@@ -70,9 +70,9 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${tags}" var="t">
+                    <c:forEach items="${tags}" var="t" varStatus="loop">
                         <tr>
-                            <td>${t.id}</td>
+                            <td>${loop.count}</td>
                             <td>${t.title}</td>
                             <td>${t.createDate}</td>
                             <td>${t.updateDate}</td>

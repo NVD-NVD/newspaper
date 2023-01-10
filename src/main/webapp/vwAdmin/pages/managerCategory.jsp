@@ -20,14 +20,14 @@
     </script>
     </jsp:attribute>
     <jsp:body>
+        <h1>Quản lý chủ đề</h1>
         <div class="sub-header d-flex justify-content-around">
-            <h1>Quản lý chủ đề</h1>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
                     data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-dark w-100 border rounded" type="text" placeholder="Search" aria-label="Search">
             <div class="add-cat">
                 <button href="#" type="button" class="btn btn-primary" onclick="addTag()">Thêm</button>
             </div>
@@ -41,6 +41,21 @@
                         <label class="form-check-label">
                             <input type="text" class="form-check-input account-check" name="title"
                                    placeholder="Nhập tên tag mới">
+                        </label>
+                        <label class="form-check-label">
+                            <<select name="parentID" id="parentID">
+                            <c:choose>
+                                <c:when test="${categories.size() == 0}">
+                                    <option value="-1">Không có danh mục để chọn</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${categories}" var="c">
+                                        <option value="-1" selected>None</option>
+                                        <option value="${c.id}">${c.title}</option>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
+                            </select>
                         </label>
                     </div>
                     <div class="mybtn">
@@ -70,9 +85,9 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${categories}" var="c">
+                    <c:forEach items="${categories}" var="c" varStatus="loop">
                         <tr>
-                            <td>${c.id}</td>
+                            <td>${loop.count}</td>
                             <td>${c.title}</td>
                             <td>${c.createDate}</td>
                             <td>&nbsp;</td>

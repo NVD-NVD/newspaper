@@ -7,8 +7,8 @@
 <jsp:useBean id="users" scope="request" type="java.util.List<com.ute.newspaper.entities.User>"/>
 
 <t:admin-layout>
+    <h1>Quản lý nhà văn</h1>
     <jsp:body>
-        <h1>Quản lý nhà văn</h1>
         <table class="table table-striped table-sm">
             <thead>
             <tr>
@@ -29,9 +29,9 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${users}" var="u">
+                    <c:forEach items="${users}" var="u" varStatus="loop">
                         <tr>
-                            <td>${u.id}</td>
+                            <td>${loop.count}</td>
                             <td>${u.name}</td>
                             <td>${u.email}</td>
                             <td>${u.username}</td>
