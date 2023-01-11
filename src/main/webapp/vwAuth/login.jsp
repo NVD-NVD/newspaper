@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="d-flex flex-row align-items-center justify-content-between">
-                        <p>Bạn chưa có tài khoản? <br><a href="/auth/signup">Đăng ký tại đây</a></p>
+                        <p>Bạn chưa có tài khoản? <br><a href="${pageContext.request.contextPath}/auth/signup">Đăng ký tại đây</a></p>
                         <button class="btn btn-primary">Đăng nhập</button>
                     </div>
                 </form>

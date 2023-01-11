@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="6b32ee13-4c0c-4a2d-9764-ebe63d77e4ca" />
+          <option name="name" value="newspaper (DDL)" />
+          <option name="dbmsName" value="MYSQL" />
+          <option name="urls">
+            <array />
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+          <option name="scriptOptions">
+            <map>
+              <entry key="CreateIfNotExists" value="1" />
+            </map>
+          </option>
+        </State>
+        <State>
+          <option name="id" value="0f72e2bd-5ddf-407c-8d61-77c18acb59c7" />
+          <option name="name" value="newspaper (DDL)" />
+          <option name="dbmsName" value="MYSQL" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$" />
+            </array>
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+      </list>
+    </option>
+  </component>
+</project>

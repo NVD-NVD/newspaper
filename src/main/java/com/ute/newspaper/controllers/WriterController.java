@@ -33,12 +33,14 @@ public class WriterController extends HttpServlet {
 
         switch (path) {
             case "/list":
-                List<Article> articles = ArticleDao.findAll();
+//                List<Article> articles = ArticleDao.findAll();
                 HttpSession session = req.getSession();
                 User user = (User) session.getAttribute("authUser");
-//                Lsist<Article> articles = ArticleService.findAllByUserID(user.getId());
-
-                req.setAttribute("articles", articles);
+                List<Article> articles = ArticleService.findAllByUserID(user.getId());
+                if (articles == null)
+                    req.setAttribute("articles", null);
+                else
+                    req.setAttribute("articles", articles);
                 ServletUtils.forward("/vwWriter/pages/list.jsp", req, resp);
                 break;
 

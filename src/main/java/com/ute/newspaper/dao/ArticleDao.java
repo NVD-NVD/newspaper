@@ -37,13 +37,11 @@ public class ArticleDao {
             List<Article> articles = con.createQuery(query)
                     .addParameter("author_id", author_id)
                     .executeAndFetch(Article.class);
+
             if (articles.size() == 0) {
                 return null;
             }
             return articles;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
         }
     }
 

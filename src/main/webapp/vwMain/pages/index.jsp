@@ -86,14 +86,60 @@
                     </div>
                     <ul>
                         <c:forEach items="${outstanding}" var="o">
+                            <c:set var="nID" value="${o.id}"/>
                             <li>
                                 <hr>
                                 <div class="d-flex flex-row mb-5">
                                     <img class="avatar-article" src="${pageContext.request.contextPath}/${o.avatar}"
                                          alt="Avatar article">
+<%--                                    <div class="d-flex flex-column ml-4">--%>
+<%--                                        <h2>${o.title}</h2>--%>
+<%--                                            ${o.abstract_content}--%>
+<%--                                    </div>--%>
                                     <div class="d-flex flex-column ml-4">
-                                        <h2>${o.title}</h2>
-                                            ${o.abstract_content}
+                                        <div class="d-flex flex-row justify-content-between">
+                                            <c:forEach items="${articleCategories}" var="ac">
+                                                <c:set var="acAID" value="${ac.article_id}"/>
+                                                <c:set var="acCID" value="${ac.category_id}"/>
+
+                                                <c:if test="${ acAID == nID}">
+                                                    <c:forEach items="${categories}" var="cate">
+                                                        <c:set var="cateID" value="${cate.id}"/>
+                                                        <c:if test="${cateID == acCID}">
+                                                            <p>${cate.title}</p>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:if>
+                                            </c:forEach>
+                                            <p>${o.createDate}</p>
+                                        </div>
+                                        <div class="titleNews">
+                                            <a href="${pageContext.request.contextPath}/main/view?id=${n.id}">
+                                                <h2>${o.title}</h2>
+                                            </a>
+                                        </div>
+                                        <div class="subContent">
+                                                ${o.abstract_content}
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-end">
+                                            <div class="mr-2">
+                                                <i class="fa-solid fa-eye">
+                                                        ${o.view}
+                                                </i>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-comment">
+                                                    <c:set var="index" value="0"/>
+                                                    <c:forEach items="${comments}" var="comment">
+                                                        <c:set var="cmmAID" value="${comment.article_id}"/>
+                                                        <c:if test="${ cmmAID == nID}">
+                                                            <c:set var="index" value="${index + 1}"/>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                        ${index}
+                                                </i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -107,14 +153,60 @@
                     </div>
                     <ul>
                         <c:forEach items="${mostView}" var="m">
+                            <c:set var="nID" value="${m.id}"/>
                             <li>
                                 <hr>
                                 <div class="d-flex flex-row mb-5">
                                     <img class="avatar-article" src="${pageContext.request.contextPath}/${m.avatar}"
                                          alt="Avatar article">
+<%--                                    <div class="d-flex flex-column ml-4">--%>
+<%--                                        <h2>${m.title}</h2>--%>
+<%--                                            ${m.abstract_content}--%>
+<%--                                    </div>--%>
                                     <div class="d-flex flex-column ml-4">
-                                        <h2>${m.title}</h2>
-                                            ${m.abstract_content}
+                                        <div class="d-flex flex-row justify-content-between">
+                                            <c:forEach items="${articleCategories}" var="ac">
+                                                <c:set var="acAID" value="${ac.article_id}"/>
+                                                <c:set var="acCID" value="${ac.category_id}"/>
+
+                                                <c:if test="${ acAID == nID}">
+                                                    <c:forEach items="${categories}" var="cate">
+                                                        <c:set var="cateID" value="${cate.id}"/>
+                                                        <c:if test="${cateID == acCID}">
+                                                            <p>${cate.title}</p>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:if>
+                                            </c:forEach>
+                                            <p>${m.createDate}</p>
+                                        </div>
+                                        <div class="titleNews">
+                                            <a href="${pageContext.request.contextPath}/main/view?id=${n.id}">
+                                                <h2>${m.title}</h2>
+                                            </a>
+                                        </div>
+                                        <div class="subContent">
+                                                ${m.abstract_content}
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-end">
+                                            <div class="mr-2">
+                                                <i class="fa-solid fa-eye">
+                                                        ${m.view}
+                                                </i>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-comment">
+                                                    <c:set var="index" value="0"/>
+                                                    <c:forEach items="${comments}" var="comment">
+                                                        <c:set var="cmmAID" value="${comment.article_id}"/>
+                                                        <c:if test="${ cmmAID == nID}">
+                                                            <c:set var="index" value="${index + 1}"/>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                        ${index}
+                                                </i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -128,14 +220,60 @@
                     </div>
                     <ul>
                         <c:forEach items="${top}" var="t">
+                            <c:set var="nID" value="${t.id}"/>
                             <li>
                                 <hr>
                                 <div class="d-flex flex-row mb-5">
                                     <img class="avatar-article" src="${pageContext.request.contextPath}/${t.avatar}"
                                          alt="Avatar article">
+<%--                                    <div class="d-flex flex-column ml-4">--%>
+<%--                                        <h2>${t.title}</h2>--%>
+<%--                                            ${t.abstract_content}--%>
+<%--                                    </div>--%>
                                     <div class="d-flex flex-column ml-4">
-                                        <h2>${t.title}</h2>
-                                            ${t.abstract_content}
+                                        <div class="d-flex flex-row justify-content-between">
+                                            <c:forEach items="${articleCategories}" var="ac">
+                                                <c:set var="acAID" value="${ac.article_id}"/>
+                                                <c:set var="acCID" value="${ac.category_id}"/>
+
+                                                <c:if test="${ acAID == nID}">
+                                                    <c:forEach items="${categories}" var="cate">
+                                                        <c:set var="cateID" value="${cate.id}"/>
+                                                        <c:if test="${cateID == acCID}">
+                                                            <p>${cate.title}</p>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:if>
+                                            </c:forEach>
+                                            <p>${t.createDate}</p>
+                                        </div>
+                                        <div class="titleNews">
+                                            <a href="${pageContext.request.contextPath}/main/view?id=${n.id}">
+                                                <h2>${t.title}</h2>
+                                            </a>
+                                        </div>
+                                        <div class="subContent">
+                                                ${t.abstract_content}
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-end">
+                                            <div class="mr-2">
+                                                <i class="fa-solid fa-eye">
+                                                        ${t.view}
+                                                </i>
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-comment">
+                                                    <c:set var="index" value="0"/>
+                                                    <c:forEach items="${comments}" var="comment">
+                                                        <c:set var="cmmAID" value="${comment.article_id}"/>
+                                                        <c:if test="${ cmmAID == nID}">
+                                                            <c:set var="index" value="${index + 1}"/>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                        ${index}
+                                                </i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </li>

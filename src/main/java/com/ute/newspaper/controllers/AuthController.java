@@ -83,7 +83,7 @@ public class AuthController extends HttpServlet {
 
     private void signup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         checked(req, resp);
-
+        req.setCharacterEncoding("UTF-8");
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String username = req.getParameter("username");
@@ -106,13 +106,15 @@ public class AuthController extends HttpServlet {
         LocalDateTime dateTime = LocalDateTime.now();
         user.setCreateDate(dateTime);
         user.setUpdateDate(dateTime);
+        user.setAvatar("public/images/avatar/default.png");
         user.setEnable(true);
         if (accountType.equals("writer")){
             user.setPenname(penname);
             user.setEnable(false);
         }
         UserDAO.add(user);
-        ServletUtils.forward("/vwAuth/login.jsp", req, resp);
+//        ServletUtils.forward("/vwAuth/login.jsp", req, resp);
+        ServletUtils.forward("/vwMain", req, resp);
     }
     private void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");

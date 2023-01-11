@@ -1,6 +1,7 @@
 package com.ute.newspaper.services;
 
 import com.ute.newspaper.dao.ArticleDao;
+import com.ute.newspaper.dao.Article_CateDao;
 import com.ute.newspaper.dao.TagDao;
 import com.ute.newspaper.entities.Article;
 import com.ute.newspaper.entities.Article_Category;
@@ -18,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,12 +30,13 @@ public class ArticleService {
     private String uploadDir = "public/images/article";
     public static List<Article> findAllByUserID(int authorID)  {
         List<Article> articles = ArticleDao.findAllByUserID(authorID);
-        if (articles.size() == 0) {
-            System.out.println("findAllByUserID is null");
+
+        if (articles == null) {
             return null;
         }
         return articles;
     }
+
 
     public static Article findByID(int id) throws ServletException, IOException {
         Article article = ArticleDao.findByID(id);
@@ -91,6 +94,7 @@ public class ArticleService {
             Article_Category articleCategory = new Article_Category();
             articleCategory.setArticle_id(article.getId());
             articleCategory.setCategory_id(categoryID);
+            Article_CateDao.add(articleCategory);
         }
 
 

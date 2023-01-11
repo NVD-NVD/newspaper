@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "mainServlet", value = "/main/*")
 public class MainController extends HttpServlet {
@@ -69,7 +71,7 @@ public class MainController extends HttpServlet {
         } else {
             List<Article_Category> articleCategories = articleCategories();
             List<UserComment> userComments = UserComment(id);
-            List<Article> hint = ArticleDao.findAll();//hint
+            List<Article> hint = hint();//hint
             req.setAttribute("article", article);
             req.setAttribute("articleCategories", articleCategories);
             req.setAttribute("userComments", userComments);
@@ -85,20 +87,31 @@ public class MainController extends HttpServlet {
     //    10 bài viết mới nhất
     private List<Article> newest() {
         List<Article> articles = getAll();
+        articles = articles.stream()
+                .sorted(Comparator.comparing(Article::getCreateDate).reversed())
+                .collect(Collectors.toList());
 
-        return articles;
+        return articles.subList(0,9);
     }
 
     //  3-4 bài viết nổi bật nhất trong tuần qua
     private List<Article> outstanding() {
         List<Article> articles = getAll();
-        articles.subList(0, 3);
-        return articles.subList(0, 3);
+        articles = articles.stream()
+                .sorted(Comparator.comparing(Article::getView).reversed())
+                .collect(Collectors.toList());
+
+        return articles.subList(0,4);
     }
 
     //  10 bài viết được xem nhiều nhất
     private List<Article> mostView() {
-        return ArticleDao.findAll();
+        List<Article> articles = getAll();
+        articles = articles.stream()
+                .sorted(Comparator.comparing(Article::getView).reversed())
+                .collect(Collectors.toList());
+
+        return articles.subList(0,10);
     }
 
     //  top 10 chuyên mục, mỗi chuyên mục 1 bài mới nhất
@@ -106,6 +119,16 @@ public class MainController extends HttpServlet {
         List<Article> articles = getAll();
 
         return articles;
+    }
+
+    //  3-4 bài viết nổi bật nhất trong tuần qua
+    private List<Article> hint() {
+        List<Article> articles = getAll();
+        articles = articles.stream()
+                .sorted(Comparator.comparing(Article::getView).reversed())
+                .collect(Collectors.toList());
+
+        return articles.subList(0,4);
     }
 
     private List<Article_Category> articleCategories() {
